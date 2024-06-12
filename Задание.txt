@@ -1,0 +1,23 @@
+CH
+docker pull clickhouse/clickhouse-server 
+
+docker run -d --name markov-ch --restart unless-stopped --cpus="1.0" --memory="256m" -p 8080:8080 -v volume:/Users/777/docker/ clickhouse/clickhouse-server
+
+docker restart markov-ch
+
+docker stop markov-ch 
+
+docker rm markov-ch
+
+
+
+PG
+docker pull postgres
+
+docker run -d --name markov-pg --cpus="1.5" --restart=unless-stopped -p 4040:4040 -v volume:/Users/777/docker/ postgres
+
+docker restart markov-pg
+
+docker stop markov-pg
+
+docker rm markov-pg
