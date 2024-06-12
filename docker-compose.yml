@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+
+  clickhouse-server:
+    image: clickhouse/clickhouse-server
+    container_name: clickhouse-server
+    restart: unless-stopped
+    mem_limit: 256m
+    ports:
+      - "8080:8080"
+    volumes:
+      - /usr/src/dev clickhouse/clickhouse-server
+
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: pgadmin123
+      POSTGRES_USER: pgadmin
+      POSTGRES_DB: my_db
+    cpus: "1.5"
+    ports:
+      - "4040:4040"
+    volumes:
+      - /usr/src/dev postgres
